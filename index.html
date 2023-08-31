@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- start -->
+   <div class="container-fluid">
+    <div class="row">
+         <div class="col-12 name">
+            <h1>เกมส์คณิตศาสตร์</h1>
+         <hr>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6  ">
+                    <button type="button" class="btn start btn-primary"  onclick="start()">เริ่ม</button>
+                </div>
+                <div class="col-6 " style="display: flex; justify-content: right;">
+                    <labal>คะแนน: <span id="score">0</span>/<span id="point">0</span> </labal>
+                </div>
+                <div class="col-12 example mt-5">
+                    <button type="button" class="btn btn-outline-danger"><span id="number1"></span></button>
+                    <label><span id="showmark"></span></label>
+                    <button type="button" class="btn btn-outline-success"><span id="number2"></span></button>
+                    <label>=</label>
+                    <input type="text" class="btn btn-outline-info"id="answer" placeholder="ใส่คำตอบ">
+                </div>
+                <div class="col-12 option mt-5">
+                    <label>ตัวเลือก</label>
+                    <input type="radio" name="choice" id="plus" value="+" onclick="radiomark('+');" />
+                     <label>+</label>
+                    <input type="radio" name="choice" id="minus" value="-" onclick="radiomark('-');" />
+                    <label>-</label>
+                    <input type="radio" name="choice" id="multiplied" value="x" onclick="radiomark('x');" />
+                    <label>x</label>
+                    <input type="radio" name="choice" id="divide" value="÷" onclick="radiomark('÷');" />
+                    <label>÷</label>
+                </div>
+                <div class="col-12 answer mt-5">
+                    <button type="button" class="btn btn-dark"  onclick="btnanswer()">ตอบ</button>
+                </div>
+                <div class="col-12 boolean mt-5">
+                    <button type="button" class="btn btn-info">ผลลัพธ์</button>
+                </div>
+                <div class="col-12">
+                    <div class="row" style="display: flex; justify-content: center;">
+                        <div class="col-8 result mt-4">
+                            <label><span id="result"></span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+</body>
+
+
+<!-- javascript -->
+<script>
+    var showscore = document.getElementById('score');
+    var showpoint = document.getElementById('point');
+    var shownumber1 = document.getElementById('number1');
+    var shownumber2 = document.getElementById('number2') ;
+    var showanswer = document.getElementById('answer') ;
+    var showresult = document.getElementById('result') ;
+    var showplus = document.getElementById('plus') ;
+    var showminus = document.getElementById('minus') ;
+    var showmultiplied = document.getElementById('multiplied') ;
+    var showdivide = document.getElementById('divide') ;
+    showplus.checkmark = true;
+    showmark.innerHTML = "+";
+    var score = 0;
+    var point = 0;
+    var number1 = 0;
+    var number2 = 0;
+    var total = 0;
+    showscore.innerHTML =score;
+    showpoint.innerHTML =point;
+
+
+    function random() {
+        showpoint.innerHTML = point;
+        number1 = Math.floor(Math.random() *11);
+        number2 = Math.floor(Math.random() *11);
+        total = number1+number2;
+        shownumber1.innerHTML = number1;
+        shownumber2.innerHTML = number2;
+    }
+     function start() {
+        random();
+        point = 0;
+        score = 0;
+        showpoint.innerHTML = point;
+        showscore.innerHTML = score;
+        showanswer.value = '';
+     }
+
+     function btnanswer() {
+        point += 1;
+        checkmark();
+        if (total == showanswer.value) {
+            showresult.innerHTML = 'ถูกต้อง';
+            showresult.style.color = 'green';
+            score += 1;
+            showscore.innerHTML =score;
+            showanswer.value = '';
+        } else{
+            showresult.innerHTML = 'ผิด';
+            showresult.style.color = 'red';
+            showanswer.value = '';
+        }
+        random();
+     }
+
+     function checkmark() {
+        if (showmark.innerHTML == "+") {
+            total = number1 + number2;
+        } else if (showmark.innerHTML == "-") {
+            total = number1 - number2;
+        } else if (showmark.innerHTML == "x") {
+            total = number1 * number2;
+        } else if (showmark.innerHTML == "÷") {
+            total = number1 / number2;
+        }
+     }
+
+     function radiomark(value) {
+        showmark.innerHTML = value;
+     }
+     random();
+
+    
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+body{
+    font-size: 20px;
+    background-color: PeachPuff;
+}
+.name{
+    padding-top: 10px;
+    text-align: center;
+}
+.start{
+    width: 150px;
+    font-size: 25px;
+}
+.example > *{
+    width: 150px;
+    text-align: center;
+}
+.example{
+    display: flex;
+    justify-content: center;
+}
+.option{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.option > *{
+    font-size: 20px;
+}
+.answer > *{
+    font-size: 20px;
+    width: 200px;
+}
+.answer{
+    display: flex;
+    justify-content: right;
+}
+.boolean{
+    display: flex;
+    justify-content: center;
+}
+.boolean > *{
+    width: 200px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    text-align: center;
+    height: 400px;
+    margin-bottom: 10px;
+    font-size: 90px;
+}
